@@ -102,13 +102,13 @@ flowchart LR
 
 ### Roles, trust relations, interactions
 
-* A RVP is a supply chain entity.  It could be a TEE vendor, a trusted firmware vendor, a confidential workload developer, or an integrator who takes sole reposibility over a complex supply chain by aggregating and re-signing reference values coming from trusted, downstream RVPs.
-* There is a trust relationship between the RVP and the verifier (owner). Therefore, the identity of the RVP must be known and trusted by the verifier.
-* A given RVP is trusted to speak trustworthily about one or more  TEE(s) / confidential workload(s).  The capabilities of a RVP must be known to the verifier.
+* An RVP is a supply chain entity.  It could be a TEE vendor, a trusted firmware vendor, a confidential workload developer, or an integrator who takes sole responsibility over a complex supply chain by aggregating and re-signing reference values from trusted, downstream RVPs.
+* A trust relationship exists between the RVP and the verifier (owner). Therefore, the identity of the RVP must be known and trusted by the verifier.
+* A given RVP is trusted to speak in a trustworthy way about one or more  TEE(s) / confidential workload(s).  The capabilities of an RVP must be known to the verifier.
 * Reference values from an unknown RVP MUST be rejected.  (The event MUST be logged.)
-* Reference values about a TEE that the RVP is not authorized to talk about MUST be rejected.  (This event MUST be logged.)
+* Reference values about a TEE that the RVP is not authorized to "talk about" MUST be rejected.  (This event MUST be logged.)
 
-* The RVPS sits within the same trust perimeter as the verifier, i.e., the verifier implementation trusts the RVPS implementation and viceversa.  How this trust relationship is established and maintained is out-of-scope for the current discussion.
+* The RVPS sits within the same trust perimeter as the verifier, i.e., the verifier implementation trusts the RVPS implementation and vice-versa.  How this trust relationship is established and maintained is out of the scope of the current discussion.
 
 
 ## Architecture
@@ -173,7 +173,7 @@ They are strings with the following structure (the resemblance with [URNs](https
 
 Attestation schemes will need to provide their `attestation-scheme-id` name and `scheme-specific-id` format.
 
-For this to work, verifier and RVPS need to have a shared understanding of the syntax and semantics of the keys (i.e., the `KeyMinter` boxes in the diagrams must be aligned).
+For this to work, the verifier and RVPS need to have a shared understanding of the syntax and semantics of the keys (i.e., the `KeyMinter` boxes in the diagrams must be aligned).
 
 #### Examples
 
@@ -184,7 +184,7 @@ rvps:cca+realm:02c4d6a3e8472211a45e3cc8119c4aa6a4adcfbe5271381151e917cbd4239da1
 
 (As [previously](#reference-values-shape) mentioned, this is an _ephemeral_ name.)
 
-For CCA platform reference values, the base-16 representation of the Implementation ID is used asa `scheme-specific-id`:
+For CCA platform reference values, the base-16 representation of the Implementation ID is used as `scheme-specific-id`:
 ```
 rvps:cca+platform:ef3ec22395bfb57301c8363e765c90dd4898896c19acd8684b9ceedcf58fa411
 ```
@@ -218,7 +218,7 @@ flowchart RL
 
 The following describes the query interface to the RVPS for reference values that need to be fetched from a remote RVP service.
 
-To make apparent the remote interaction, the following assumes a cache-miss on the Store for the specific key:
+To make apparent the remote interaction, the following assumes a cache miss on the Store for the specific key:
 
 ```mermaid
 flowchart LR
@@ -246,5 +246,17 @@ flowchart LR
     SSRVPS -->|"(7)\ncache(rv)"| Store
     API2 -->|"(8)\nrv[1..j]"| TSB
 ```
+
+## Known "Bad" Values
+
+There should be a way to model revocation of previously provisioned reference values or, more generally, to define "deny lists" of explicitly prohibited measurements for a given environment.
+
+The syntax of such a construct would be the same as the one used to define RVs with an additional "reason" (e.g., "obsolete", "insecure", etc.).
+
+## Endorsed Values
+
+It should be possible to attach metadata about an environment that can then be added as "augmented claims" to an attestation result if a certain RV (or also if a known bad value), is matched.  E.g., workload name, version, author, link into a supply-chain transparency log, CVE, etc.
+
+
 
 
