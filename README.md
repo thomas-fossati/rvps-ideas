@@ -171,7 +171,7 @@ They are strings with the following structure (the resemblance with [URNs](https
 
 `:` is a reserved character and MUST not be present in any of the id blocks.
 
-Attestation schemes will need to provide their `attestation-scheme-id` name and `scheme-specific-id`` format.
+Attestation schemes will need to provide their `attestation-scheme-id` name and `scheme-specific-id` format.
 
 For this to work, verifier and RVPS need to have a shared understanding of the syntax and semantics of the keys (i.e., the `KeyMinter` boxes in the diagrams must be aligned).
 
