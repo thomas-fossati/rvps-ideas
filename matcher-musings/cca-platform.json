@@ -1,0 +1,58 @@
+{
+    "heading": {
+        "author": "thofos",
+        "attestation-scheme": "arm:cca:platform"
+    },
+    "reference-values": [
+        {
+            "cond": {
+                "implementation-id": {
+                    "cmp": "in-set",
+                    "values": [
+                        "qrvM3Q=="
+                    ]
+                },
+                "sw-components": {
+                    "cmp": "in-set",
+                    "values": [
+                        [
+                            {
+                                "measurement-value": "//8=",
+                                "signer-id": "7u4="
+                            },
+                            {
+                                "measurement-value": "qrs=",
+                                "signer-id": "7u4="
+                            }
+                        ]
+                    ]
+                },
+                "platform-configuration": {
+                    "cmp": "masked",
+                    "values": [
+                        {
+                            "bytes": "AAE=",
+                            "mask": "AQE="
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "endorsed-values": [
+        {
+            "cond": {
+                "implementation-id": {
+                    "cmp": "in-set",
+                    "values": [
+                        "qrvM3Q=="
+                    ]
+                }
+            },
+            "claims": {
+                "vendor": "ACME Inc",
+                "model": "very confidential"
+            }
+        }
+    ]
+}

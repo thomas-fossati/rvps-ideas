@@ -1,0 +1,52 @@
+start = manifest
+
+manifest = {
+  heading: heading
+  ? reference-values: [ + RV ]
+  ? x-reference-values: [ + xRV ]
+  ? endorsed-values: [ + EV ]
+}
+
+heading = {
+  author: text
+  attestation-scheme: text
+  ; $extns
+}
+
+matcher = {
+  cmp: $cmp
+  values: values
+}
+
+claim-id = text / int
+
+$cmp /= "in-set"   ; any
+  / "in-range" ; sortable types
+  / "masked"   ; bytes
+  / "regexp"   ; text
+
+values = [ + any ]
+
+named-claims = {
+  + claim-id => any
+}
+
+RV = { 
+  ? desc: text
+  cond: { + claim-id => matcher }
+}
+
+EV = {
+  ? desc: text
+  cond: { + claim-id => matcher }
+  claims: named-claims
+}
+
+xRV = {
+  ? desc: text
+  cond: { + claim-id => matcher }
+  reason: $reason
+}
+
+$reason /= "insecure"
+  / "obsolete"

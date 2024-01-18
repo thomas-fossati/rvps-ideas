@@ -1,0 +1,84 @@
+{
+    "heading": {
+        "author": "thofos",
+        "attestation-scheme": "arm:cca:realm"
+    },
+    "reference-values": [
+        {
+            "cond": {
+                "rim": {
+                    "cmp": "in-set",
+                    "values": [
+                        "3q0=",
+                        "vq8="
+                    ]
+                },
+                "rem": {
+                    "cmp": "in-set",
+                    "values": [
+                        [
+                            "3q0=",
+                            "vq8=",
+                            "AAA=",
+                            "AAA="
+                        ],
+                        [
+                            "AAA=",
+                            "AAA=",
+                            "AAA=",
+                            "AAA="
+                        ]
+                    ]
+                }
+            }
+        }
+    ],
+    "x-reference-values": [
+        {
+            "cond": {
+                "rim": {
+                    "cmp": "in-set",
+                    "values": [
+                        "+v8="
+                    ]
+                }
+            },
+            "reason": "insecure"
+        }
+    ],
+    "endorsed-values": [
+        {
+            "cond": {
+                "rim": {
+                    "cmp": "in-set",
+                    "values": [
+                        "3q0="
+                    ]
+                }
+            },
+            "claims": {
+                "version": "1.2.9rc1",
+                "features": [
+                    "A",
+                    "B"
+                ]
+            }
+        },
+        {
+            "cond": {
+                "rim": {
+                    "cmp": "in-set",
+                    "values": [
+                        "vq8="
+                    ]
+                }
+            },
+            "claims": {
+                "version": "1.0.0",
+                "features": [
+                    "A"
+                ]
+            }
+        }
+    ]
+}
