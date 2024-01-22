@@ -32,7 +32,7 @@ claim-id = text / int
 
 ```cddl
 RV = { 
-  ? desc: text
+  ? environment-id: any
   cond: { + claim-id => matcher }
 }
 ```
@@ -41,7 +41,7 @@ RV = {
 
 ```cddl
 xRV = {
-  ? desc: text
+  ? environment-id: any
   cond: { + claim-id => matcher }
   reason: $reason
 }
@@ -54,7 +54,7 @@ $reason /= "insecure"
 
 ```cddl
 EV = {
-  ? desc: text
+  ? environment-id: any
   cond: { + claim-id => matcher }
   claims: named-claims
 }

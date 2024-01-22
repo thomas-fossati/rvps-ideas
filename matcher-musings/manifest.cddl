@@ -32,18 +32,18 @@ named-claims = {
 }
 
 RV = { 
-  ? desc: text
+  ? environment-id: any
   cond: { + claim-id => matcher }
 }
 
 EV = {
-  ? desc: text
+  ? environment-id: any
   cond: { + claim-id => matcher }
   claims: named-claims
 }
 
 xRV = {
-  ? desc: text
+  ? environment-id: any
   cond: { + claim-id => matcher }
   reason: $reason
 }
