@@ -1,0 +1,19 @@
+name: CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: install CDDL and CBOR tooling
+      run: gem install --user-install cbor-diag cddl
+    - name: setup PATH
+      run: echo "$(gem env gempath | cut -d':' -f1)/bin" >> $GITHUB_PATH
+    - name: check schema and examples
+      run: make -C matcher-musings
